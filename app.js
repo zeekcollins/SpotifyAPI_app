@@ -22,7 +22,8 @@ $( document ).ready(function() {
    // AUTHORIZE with Spotify (if needed)
    // *************** REPLACE THESE VALUES! *************************
    const client_id = "7bc91a436e9c4482bc405fb3bfa9b9f4";
-    const redirect_uri = "https%3A%2F%2Fzeekcollins.github.io%2FSpotifyAPI_app";
+   const redirect_uri = "https%3A%2F%2Fzeekcollins.github.io%2FSpotifyAPI_app"; // GitHub Pages URL or whatever your public url to this app is
+   // *************** END *************************
 
    const redirect = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`;
    // Don't authorize if we have an access token already
@@ -31,9 +32,9 @@ $( document ).ready(function() {
    }
 
    // Search button has been clicked
-   $( ".search-btn" ).click(function() {
+   $( "#search_button" ).click(function() {
      //Get the value of the search box
-     let raw_search_query = $('.search-text').val();
+     let raw_search_query = $('#search-text').val();
      let search_query = encodeURI(raw_search_query);
      // Make Spotify API call
      // Note: We are using the track API endpoint.
