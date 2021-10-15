@@ -1,0 +1,84 @@
+:root {
+  --spotifyGreen: #52e091;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 100px 50px;
+  background-image: url("../images/spotify.png");
+  background-position: center right;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-content {
+  width: fit-content;
+  padding: 20px;
+  border: 2px solid white;
+  margin-bottom: 100px;
+  border-radius: 100vh;
+  cursor: pointer;
+  background-color: var(--spotifyGreen);
+}
+
+.search-text {
+  color: white;
+  border: none;
+  font-size: 1.25rem;
+  width: 0;
+  opacity: 0;
+  outline: none;
+  background-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.search-text::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.25rem;
+}
+
+.search-bar-content:hover > .search-text {
+  width: 240px;
+  opacity: 1;
+  transition: 0.25s;
+}
+
+.search-bar-content:hover > .search-btn i {
+  font-size: 1.25rem;
+  transition: 0.25s;
+}
+
+.search-text:valid {
+  width: 240px;
+  opacity: 1;
+}
+
+.search-text:valid + .search-btn i {
+  font-size: 1.25rem;
+}
+
+.search-btn {
+  padding-right: 3px;
+}
+
+.search-btn i {
+  color: white;
+  font-size: 2.5rem;
+  transition: 0.25s;
+}
