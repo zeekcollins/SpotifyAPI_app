@@ -40,8 +40,8 @@ window.onload = () => {
 
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", spotSearch);
-    xhttp.send();
     xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
+    xhttp.send();
     xhttp.onreadystatechange = () => {
       if (this.readyState == 4 && this.status == 200) {
         console.log(xhttp.response);
