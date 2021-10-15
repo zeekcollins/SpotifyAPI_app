@@ -53,6 +53,17 @@ main {
   font-size: 1.25rem;
 }
 
+.search-bar-content:hover > .search-text {
+  width: 240px;
+  opacity: 1;
+  transition: 0.25s;
+}
+
+.search-bar-content:hover > .search-btn i {
+  font-size: 1.25rem;
+  transition: 0.25s;
+}
+
 .search-text:valid {
   width: 240px;
   opacity: 1;

@@ -18,6 +18,7 @@ window.onload = () => {
 
     const accessToken = getAccessToken('access_token');
     const client_id = "7bc91a436e9c4482bc405fb3bfa9b9f4";
+    // const redirect_uri = "http%3A%2F%2Flocalhost%3A5500%2Findex.html";
     const redirect_uri = "https%3A%2F%2Fzeekcollins.github.io%2FSpotifyAPI_app";
 
     const get = `${spotAuth}?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`;
@@ -25,9 +26,8 @@ window.onload = () => {
         window.location.replace(get);
     }
 
-    const searchBtn = document.querySelector(".search-btn");
-    searchBtn.addEventListener("click", () => {
-        let rawQuery = document.querySelector(".search-text").value;
+    $(".search-btn").click(() => {
+      let rawQuery = document.querySelector(".search-text").value;
         let searchQuery = encodeURI(rawQuery);
 
         $.ajax({
@@ -36,9 +36,19 @@ window.onload = () => {
                 'Authorization': 'Bearer ' + accessToken
             },
             success: (response) => {
-                console.log(response);
+                let trackCount = response.tracks.items.length;
+                let i = 0;
+
+                const maxSongs = 12;
+                while (i < maxSongs && i < trackCount) {
+                  let trackId = response.tracks.items[i].id;
+                  let songSrc = `https://open.spotify.com/embed/track/${trackId}`;
+                  let entry = `<div class="song"><iframe src=${songSrc} allow="encrypted-media"></iframe></div>`
+                  let parent = document.querySelector(".song" + (count+1));
+                  parent.innerHTML = entry;
+                  i++;
+                }
             }
         });
     });
-
 };
