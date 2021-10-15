@@ -32,33 +32,20 @@ window.onload = () => {
       window.location.replace(get);
   }
 
-  $(".search-btn").click(() => {
-    let rawQuery = $(".search-text").val();
+  const searchBtn = document.querySelector(".search-btn");
+  searchBtn.addEventListener("click", () => {
+    let rawQuery = document.querySelector(".search-text").value;
     let searchQuery = encodeURI(rawQuery);
-    
-    $.ajax({
-      url: `https://api.spotify.com/v1/search?q=${searchQuery}&type=track`,
-      type: 'GET',
-      headers: {
-          'Authorization' : 'Bearer ' + accessToken
-      },
-      success: function(data) {
-        // Load our songs from Spotify into our page
-        let num_of_tracks = data.tracks.items.length;
-        let count = 0;
-        // Max number of songs is 12
-        const max_songs = 12;
-        while(count < max_songs && count < num_of_tracks){
-          // Extract the id of the FIRST song from the data object
-          let id = data.tracks.items[count].id;
-          // Constructing two different iframes to embed the song
-          let src_str = `https://open.spotify.com/embed/track/${id}`;
-          let iframe = `<div class='song'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
-          let parent_div = $('.song'+ (count+1));
-          parent_div.html(iframe);
-          count++;
-        }
+    let spotSearch = `${spotUri}?q=${searchQuery}&type=track`;
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", spotSearch);
+    xhttp.send();
+    xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
+    xhttp.onreadystatechange = () => {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(xhttp.response);
       }
-    });
+    }
   });
 };
