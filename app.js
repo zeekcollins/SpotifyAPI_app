@@ -37,24 +37,24 @@ window.onload = () => {
         let searchQuery = encodeURI(rawQuery);
 
         $.ajax({
-            url: `${spotUri}?q=${searchQuery}&type=track`,
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            },
-            success: (response) => {
-                let trackCount = response.tracks.items.length;
-                let i = 0;
+          url: `${spotUri}?q=${searchQuery}&type=track`,
+          headers: {
+              'Authorization': 'Bearer ' + accessToken
+          },
+          success: function(response) {
+              let trackCount = response.tracks.items.length;
+              let i = 0;
 
-                const maxSongs = 12;
-                while (i < maxSongs && i < trackCount) {
-                  let trackId = response.tracks.items[i].id;
-                  let songSrc = `https://open.spotify.com/embed/track/${trackId}`;
-                  let entry = `<div class="song"><iframe src=${songSrc} allow="encrypted-media"></iframe></div>`
-                  let parent = document.querySelector(".song" + (count+1));
-                  parent.innerHTML = entry;
-                  i++;
-                }
-            }
+              const maxSongs = 12;
+              while (i < maxSongs && i < trackCount) {
+                let trackId = response.tracks.items[i].id;
+                let songSrc = `https://open.spotify.com/embed/track/${trackId}`;
+                let entry = `<div class="song"><iframe src=${songSrc} allow="encrypted-media"></iframe></div>`
+                let parent = document.querySelector(".song" + (count+1));
+                parent.innerHTML = entry;
+                i++;
+              }
+          }
         });
     });
 };
