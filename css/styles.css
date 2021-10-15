@@ -26,7 +26,7 @@ body {
 main {
   width: 100%;
   min-height: 100%;
-  padding: 100px 50px;
+  padding: 0 50px 100px;
 }
 
 .search-bar {
@@ -90,6 +90,12 @@ main {
   color: white;
   font-size: 2.5rem;
   transition: 0.25s;
+}
+
+.track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .song iframe {
