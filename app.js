@@ -33,28 +33,29 @@ window.onload = () => {
     }
 
     $(".search-btn").click(() => {
+
       let rawQuery = document.querySelector(".search-text").value;
-        let searchQuery = encodeURI(rawQuery);
+      let searchQuery = encodeURI(rawQuery);
 
-        $.ajax({
-          url: `${spotUri}?q=${searchQuery}&type=track`,
-          headers: {
-              'Authorization': 'Bearer ' + accessToken
-          },
-          success: function(response) {
-              let trackCount = response.tracks.items.length;
-              let i = 0;
+      $.ajax({
+        url: `https://api.spotify.com/v1/search?q=${searchQuery}&type=track`,
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+        success: function(response) {
+            let trackCount = response.tracks.items.length;
+            let i = 0;
 
-              const maxSongs = 12;
-              while (i < maxSongs && i < trackCount) {
-                let trackId = response.tracks.items[i].id;
-                let songSrc = `https://open.spotify.com/embed/track/${trackId}`;
-                let entry = `<div class="song"><iframe src=${songSrc} allow="encrypted-media"></iframe></div>`
-                let parent = document.querySelector(".song" + (count+1));
-                parent.innerHTML = entry;
-                i++;
-              }
-          }
-        });
+            const maxSongs = 12;
+            while (i < maxSongs && i < trackCount) {
+              let trackId = response.tracks.items[i].id;
+              let songSrc = `https://open.spotify.com/embed/track/${trackId}`;
+              let entry = `<div class="song"><iframe src=${songSrc} allow="encrypted-media"></iframe></div>`
+              let parent = document.querySelector(".song" + (count+1));
+              parent.innerHTML = entry;
+              i++;
+            }
+        }
+      });
     });
 };
