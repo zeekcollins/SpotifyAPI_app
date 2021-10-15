@@ -39,13 +39,21 @@ window.onload = () => {
     let spotSearch = `${spotUri}?q=${searchQuery}&type=track`;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", spotSearch);
+    xhttp.open("GET", spotSearch, true);
     xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
-    xhttp.send();
-    xhttp.onreadystatechange = () => {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(xhttp.response);
+    
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState === XMLHttpRequest.DONE) {
+        var status = xhttp.status;
+
+        if (status === 0 || (status >= 200 && status < 400)) {
+          console.log(xhttp.responseText);
+        } else {
+          alert("Error with the request")
+        }
       }
-    }
+    };
+    
+    xhttp.send();
   });
 };
