@@ -6,7 +6,7 @@ Spotify Web API App
 </h1>
 
 <h4 align="center">
-  Single page web app that sends requests to Spotify's Web API, and returns the top 9 tracks as a result of the user's query entry. The 9 tracks are embedded into the web page with the option to play any of the tracks in full. 
+  Single page web app that sends HTTP requests to Spotify's Web API, and returns the top 9 tracks as a result of the user's query entry. The 9 tracks are embedded into the web page with the option to play any of the tracks in full if the user is successfully logged in. View "Note" below.
 </h4>
 <br>
 
@@ -34,9 +34,9 @@ This project was developed with the following technologies:
 
 I deployed the app with Heroku. If you're interested in taking a look at the live site, [check it out here](https://spotifyapi-app.herokuapp.com/).
 
-### Important
+### Note
 
-The development process was only created for and tested on chrome and firefox, so I can't guarantee that things will be smooth on IE, Safari, etc., but feel free to try it out.
+The development process was only created for and tested on chrome and firefox, so I can't guarantee that things will be smooth on IE, Safari, etc., but feel free to try it out. I set up user authorization through Spotify's API, but the mobile version doesn't seem to authorize the user. Because of this, it only allows them to play 30 seconds of each song, with the option to download Spotify or head over to Spotify's mobile app.
 
 ---
 
