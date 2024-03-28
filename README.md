@@ -10,7 +10,7 @@ Spotify Web API App
 </h4>
 <br>
 
-## Click [here](https://spotifyapi-app.herokuapp.com/) to give it a try.
+## Click [here](https://zeekcollins.github.io/SpotifyAPI_app) to give it a try.
 
 ## :warning: Notice
 
@@ -32,7 +32,7 @@ This project was developed with the following technologies:
 
 ## :running: Running
 
-I deployed the app with Heroku. If you're interested in taking a look at the live site, [check it out here](https://spotifyapi-app.herokuapp.com/).
+I previously deployed this app on Heroku, but once they removed their free tier, I decided to just deploy this app using GitHub Pages. If you're interested in taking a look at the site, [check it out here](https://zeekcollins.github.io/SpotifyAPI_app).
 
 ### Note
 
