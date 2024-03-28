@@ -20,7 +20,7 @@ $(document).ready(function() {
 
   const accessToken = getAccessToken('access_token');
   const client_id = "7bc91a436e9c4482bc405fb3bfa9b9f4";
-  const redirect_uri = encodeURIComponent("https://zeekcollins.github.io/SpotifyAPI_app/");
+  const redirect_uri = encodeURIComponent("https://zeekcollins.github.io/SpotifyAPI_app");
 
 
 
